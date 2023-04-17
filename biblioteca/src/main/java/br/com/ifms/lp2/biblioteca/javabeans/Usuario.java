@@ -1,6 +1,6 @@
 package br.com.ifms.lp2.biblioteca.javabeans;
 
-
+import java.util.List;
 
 // @Entity
 public class Usuario {
@@ -9,6 +9,7 @@ public class Usuario {
     private Long id;
     private String nome;
     private String email;
+    private List<Telefone>telefones;
 
     // construtor
     public Usuario(Long id, String nome, String email) {
@@ -41,5 +42,7 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    
 }
 
