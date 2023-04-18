@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.ifms.lp2.biblioteca.javabeans.Reserva;
+import br.com.ifms.lp2.biblioteca.javabeans.Funcionario;
 import br.com.ifms.lp2.biblioteca.repository.FuncionarioRepository;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -22,13 +22,13 @@ public class FuncionarioResource {
     FuncionarioRepository funcionarioRepository;
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " Inserido reserva com sucesso!!!"),
+            @ApiResponse(code = 200, message = " Inserido Funcionario com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
     @PostMapping("/inserir")
-    public Reserva salvarReserva(@RequestBody @Valid Reserva reserva) {
-        return reservaRepository.save(reserva);
+    public Funcionario salvarFuncionario(@RequestBody @Valid Funcionario funcionario) {
+        return funcionarioRepository.save(funcionario);
     }
 
     @ApiResponses(value = {
@@ -36,35 +36,35 @@ public class FuncionarioResource {
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/listarReservas
-    @GetMapping("/listarReservas")
-    public List<Reserva> listarReserva() {
-        return reservaRepository.findAll();
+    // http://localhost:8080/api/funcionario/listarFuncionarios
+    @GetMapping("/listarFuncionarios")
+    public List<Funcionario> listarFuncionario() {
+        return funcionarioRepository.findAll();
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva encontrado com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID da Funcionario encontrado com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/reservaid/2
-    @GetMapping("/reservaid/{id}")
-    public Optional<Reserva> buscaReserva(@PathVariable(value = "id") long id) {
-        return reservaRepository.findById(id);
+    // http://localhost:8080/api/funcionario/Funcionarioid/2
+    @GetMapping("/Funcionarioid/{id}")
+    public Optional<Funcionario> buscaFuncionario(@PathVariable(value = "id") long id) {
+        return funcionarioRepository.findById(id);
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva removido com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID do Funcionario removido com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/remover/2
+    // http://localhost:8080/api/funcionario/remover/2
     @DeleteMapping(value = "/remover/{id}")
-    public void deleteReserva(@PathVariable("id") long id) throws Exception {
+    public void deleteFuncionario(@PathVariable("id") long id) throws Exception {
 
-        Optional<Reserva> reserva = reservaRepository.findById(id);
-        if (reserva.get().getIdReserva() > 0) {
-            reservaRepository.deleteById(id);
+        Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
+        if (funcionario.get().getIdFuncionario() > 0) {
+            funcionarioRepository.deleteById(id);
         } else {
             System.out.println("não encontrado");
             throw new Exception("ID não encontrado!!!");
@@ -72,18 +72,18 @@ public class FuncionarioResource {
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva atulizado com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID do Funcionario atulizado com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/atualizar/2
+    // http://localhost:8080/api/Funcionario/atualizar/2
     @PutMapping("/atualizar/{id}")
-    public void atualizarReserva(@PathVariable(value = "id") long id, @RequestBody Reserva novaReserva) {
-        Optional<Reserva> antigaReserva = reservaRepository.findById(id);
+    public void atualizarFuncionario(@PathVariable(value = "id") long id, @RequestBody Funcionario novoFuncionario) {
+        Optional<Funcionario> antigoFuncionario = funcionarioRepository.findById(id);
 
-        if (antigaReserva.get().getIdReserva() > 0) {
-            novaReserva.setIdReserva(antigaReserva.get().getIdReserva());
-            reservaRepository.save(novaReserva);
+        if (antigoFuncionario.get().getIdFuncionario() > 0) {
+            novoFuncionario.setIdFuncionario(antigoFuncionario.get().getIdFuncionario());
+            funcionarioRepository.save(novoFuncionario);
         }
     }
 }

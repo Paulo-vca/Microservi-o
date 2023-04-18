@@ -35,7 +35,7 @@ public class ReservaResource {
     @PostMapping("/inserir")
     public Reserva salvarReserva(@RequestBody @Valid Reserva reserva) {
         return reservaRepository.save(reserva);
-    }
+    } 
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = " Listado com sucesso!!!"),

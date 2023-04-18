@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.ifms.lp2.biblioteca.javabeans.Reserva;
+import br.com.ifms.lp2.biblioteca.javabeans.Livro;
 import br.com.ifms.lp2.biblioteca.repository.LivroRepository;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -22,13 +22,13 @@ public class LivroResource {
     LivroRepository livroRepository;
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " Inserido reserva com sucesso!!!"),
+            @ApiResponse(code = 200, message = " Inserido Livro com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
     @PostMapping("/inserir")
-    public Reserva salvarReserva(@RequestBody @Valid Reserva reserva) {
-        return reservaRepository.save(reserva);
+    public Livro salvarLivro(@RequestBody @Valid Livro livro) {
+        return livroRepository.save(livro);
     }
 
     @ApiResponses(value = {
@@ -36,35 +36,35 @@ public class LivroResource {
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/listarReservas
-    @GetMapping("/listarReservas")
-    public List<Reserva> listarReserva() {
-        return reservaRepository.findAll();
+    // http://localhost:8080/api/livro/listarLivros
+    @GetMapping("/listarLivros")
+    public List<Livro> listarLivro() {
+        return livroRepository.findAll();
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva encontrado com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID do Livro encontrado com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/reservaid/2
-    @GetMapping("/reservaid/{id}")
-    public Optional<Reserva> buscaReserva(@PathVariable(value = "id") long id) {
-        return reservaRepository.findById(id);
+    // http://localhost:8080/api/livro/Livroid/2
+    @GetMapping("/Livroid/{id}")
+    public Optional<Livro> buscaLivro(@PathVariable(value = "id") long id) {
+        return livroRepository.findById(id);
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva removido com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID do Livro removido com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/remover/2
+    // http://localhost:8080/api/livro/remover/2
     @DeleteMapping(value = "/remover/{id}")
-    public void deleteReserva(@PathVariable("id") long id) throws Exception {
+    public void deleteLivro(@PathVariable("id") long id) throws Exception {
 
-        Optional<Reserva> reserva = reservaRepository.findById(id);
-        if (reserva.get().getIdReserva() > 0) {
-            reservaRepository.deleteById(id);
+        Optional<Livro> Livro = livroRepository.findById(id);
+        if (Livro.get().getIdLivro() > 0) {
+            livroRepository.deleteById(id);
         } else {
             System.out.println("não encontrado");
             throw new Exception("ID não encontrado!!!");
@@ -72,18 +72,18 @@ public class LivroResource {
     }
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = " ID da reserva atulizado com sucesso!!!"),
+            @ApiResponse(code = 200, message = " ID da Livro atulizado com sucesso!!!"),
             @ApiResponse(code = 403, message = "Voçê não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerado uma exceção")
     })
-    // http://localhost:8080/api/reserva/atualizar/2
+    // http://localhost:8080/api/livro/atualizar/2
     @PutMapping("/atualizar/{id}")
-    public void atualizarReserva(@PathVariable(value = "id") long id, @RequestBody Reserva novaReserva) {
-        Optional<Reserva> antigaReserva = reservaRepository.findById(id);
+    public void atualizarLivro(@PathVariable(value = "id") long id, @RequestBody Livro novoLivro) {
+        Optional<Livro> antigoLivro = livroRepository.findById(id);
 
-        if (antigaReserva.get().getIdReserva() > 0) {
-            novaReserva.setIdReserva(antigaReserva.get().getIdReserva());
-            reservaRepository.save(novaReserva);
+        if (antigoLivro.get().getIdLivro() > 0) {
+            novoLivro.setIdLivro(antigoLivro.get().getIdLivro());
+            livroRepository.save(novoLivro);
         }
     }
 }

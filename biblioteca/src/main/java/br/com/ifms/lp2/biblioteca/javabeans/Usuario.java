@@ -2,13 +2,20 @@ package br.com.ifms.lp2.biblioteca.javabeans;
 
 import java.util.List;
 
-// @Entity
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+
+@Entity
 public class Usuario {
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
     private String nome;
     private String email;
+    @JoinColumn(name="IdUsuario")
     private List<Telefone>telefones;
 
     // construtor
