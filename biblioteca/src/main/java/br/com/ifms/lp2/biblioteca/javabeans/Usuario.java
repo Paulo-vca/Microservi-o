@@ -6,25 +6,25 @@ import java.util.List;
 public class Usuario {
     // @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
     private String nome;
     private String email;
     private List<Telefone>telefones;
 
     // construtor
-    public Usuario(Long id, String nome, String email) {
-        this.id = id;
+    public Usuario(Long idUsuario, String nome, String email) {
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
     }
 
     // getters e setters
-    public Long getId() {
-        return id;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {

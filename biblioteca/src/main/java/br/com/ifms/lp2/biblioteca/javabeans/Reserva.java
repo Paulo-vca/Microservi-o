@@ -2,13 +2,20 @@ package br.com.ifms.lp2.biblioteca.javabeans;
 
 import java.util.Date;
 
-// @Entity
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+
+@Entity
 // @Table(name = "reservas")
 public class Reserva {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idReserva;
 
     // @ManyToOne(fetch = FetchType.LAZY)
     // @JoinColumn(name = "livro_id")
@@ -31,12 +38,12 @@ public class Reserva {
     // getters e setters
 
 
-    public Long getId() {
-        return this.id;
+    public Long getIdReserva() {
+        return this.idReserva;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdReserva(Long idReserva) {
+        this.idReserva = idReserva;
     }
 
     public Livro getLivro() {

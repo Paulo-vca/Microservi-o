@@ -11,7 +11,7 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idAutor;
 
     private String nome;
 
@@ -27,12 +27,12 @@ public class Autor {
 
     // getters e setters
 
-    public Long getId() {
-        return this.id;
+    public Long getIdAutor() {
+        return this.idAutor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdAutor(Long idAutor) {
+        this.idAutor = idAutor;
     }
 
     public String getNome() {

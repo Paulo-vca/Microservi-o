@@ -5,7 +5,7 @@ public class Funcionario {
 
     // @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idFuncionario;
 
     private String nome;
 
@@ -24,12 +24,12 @@ public class Funcionario {
 
     // getters e setters
 
-    public Long getId() {
-        return this.id;
+    public Long getIdFuncionario() {
+        return this.idFuncionario;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdFuncionario(Long idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
     public String getNome() {

@@ -10,7 +10,7 @@ public class Editora {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEditora;
 
     private String nome;
 
@@ -27,12 +27,12 @@ public class Editora {
     // getters e setters
 
 
-    public Long getId() {
-        return this.id;
+    public Long getIdEditora() {
+        return this.idEditora;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEditora(Long idEditora) {
+        this.idEditora = idEditora;
     }
 
     public String getNome() {

@@ -6,15 +6,15 @@ package br.com.ifms.lp2.biblioteca.javabeans;
 public class Livro {
     // @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idLivro;
     private String titulo;
     private String autor;
     private String editora;
     private boolean disponivel;
 
     // construtor
-    public Livro(Long id, String titulo, String autor, String editora, boolean disponivel) {
-        this.id = id;
+    public Livro(Long idLivro, String titulo, String autor, String editora, boolean disponivel) {
+        this.idLivro = idLivro;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
@@ -22,12 +22,12 @@ public class Livro {
     }
 
     // getters e setters
-    public Long getId() {
-        return id;
+    public Long getIdLivro() {
+        return idLivro;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdLivro(Long idLivro) {
+        this.idLivro = idLivro;
     }
 
     public String getTitulo() {

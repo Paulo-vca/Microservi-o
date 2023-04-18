@@ -9,15 +9,15 @@ import jakarta.persistence.Entity;
 public class Emprestimo {
     // @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEmprestimo;
     private Long idLivro;
     private Long idUsuario;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
 
     // construtor
-    public Emprestimo(Long id, Long idLivro, Long idUsuario, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
-        this.id = id;
+    public Emprestimo(Long idEmprestimo, Long idLivro, Long idUsuario, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+        this.idEmprestimo = idEmprestimo;
         this.idLivro = idLivro;
         this.idUsuario = idUsuario;
         this.dataEmprestimo = dataEmprestimo;
@@ -27,12 +27,12 @@ public class Emprestimo {
     // getters e setters
 
 
-    public Long getId() {
-        return this.id;
+    public Long getIdEmprestimo() {
+        return this.idEmprestimo;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmprestimo(Long idEmprestimo) {
+        this.idEmprestimo = idEmprestimo;
     }
 
     public Long getIdLivro() {
